@@ -13,19 +13,13 @@ function PokeList(){
             setIsLoding(true)
             const data1 = await fetch(pokeUrl)
             const res = await data1.json()
-            console.log(res)
             setNext(res.next)
             setPrev(res.previous)
-            console.log(nxt)
-            //setIsLoding(false)
             const pokeArr = res.results
-            //console.log(pokeArr)
             const pokeArr2 = pokeArr.map((p) => fetch(p.url))
-            //console.log(pokeArr2)
             const pokeData = await Promise.all(pokeArr2)
             const pokeData2 = pokeData.map((p) => p.json())
             const finalData = await Promise.all(pokeData2)
-            console.log(finalData)//find name
             const finalResult = finalData.map((p) =>{
                 return {
                     name: p.name,
@@ -34,9 +28,7 @@ function PokeList(){
                     id: p.id
                 }
             })
-            //console.log(finalResult)
             setPokeDetails(finalResult)
-            //console.log(PokeDetails)
             setIsLoding(false)
         }catch{
             console.log("handeled")//something went wrong
@@ -69,4 +61,3 @@ function PokeList(){
     )
 }
 export default PokeList
-//bg-slate-500 ml-2 px-6 py-1 font-serif tracking-[4px]

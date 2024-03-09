@@ -11,4 +11,3 @@ function Heading(){
     )
 }
 export default Heading
-//text 5xl text-[40px]
