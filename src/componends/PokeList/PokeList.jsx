@@ -36,6 +36,7 @@ function PokeList(){
     }
     useEffect(() => {
         fetchData()
+        // eslint-disable-next-line
     },[pokeUrl])
     return(
         <div className="flex flex-col w-full items-center justify-center mt-8 mb-8">
