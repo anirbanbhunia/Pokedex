@@ -2,6 +2,8 @@ import { MdCatchingPokemon } from "react-icons/md";
 import Card from "../Card/Card"
 import SearchBox from "../SearchBox/SearchBox";
 import useCustomHook from "../CustomHook/useCustomHook";
+import { useState } from "react";
+import PokemonDetails from "../PokemonDetails/PokemonDetails";
 
 
 function PokeList(){
@@ -58,29 +60,33 @@ function PokeList(){
     //use cutomhook
     const [allState,setAllState] = useCustomHook("https://pokeapi.co/api/v2/pokemon/")
 
+    const [SearchTerm,setSearchTerm] = useState("")
+
     return(
         <div className="flex flex-col items-center">
-            <SearchBox/>
-            <div className="flex flex-col w-full items-center justify-center mt-8 mb-8">
-                <div className="flex flex-wrap justify-around mx-4 sm:gap-x-3">
-                    {allState.isLoding ?<div className="flex items-center gap-2">
-                        <MdCatchingPokemon className="animate-spin font-thin text-2xl text-gray-400" />
-                    <span className="text-lg text-gray-400">Loading....</span>
+            <SearchBox update = {setSearchTerm}/>
+            {(!SearchTerm)?
+                <div className="flex flex-col w-full items-center justify-center mt-8 mb-8">
+                    <div className="flex flex-wrap justify-around mx-4 sm:gap-x-3">
+                        {allState.isLoding ?<div className="flex items-center gap-2">
+                            <MdCatchingPokemon className="animate-spin font-thin text-2xl text-gray-400" />
+                        <span className="text-lg text-gray-400">Loading....</span>
+                        </div>
+                        :allState.PokeDetails.map((e) => <Card name={e.name} image={e.image} key={e.id} type={e.type[0].type.name} id={e.id}/>)}
                     </div>
-                    :allState.PokeDetails.map((e) => <Card name={e.name} image={e.image} key={e.id} type={e.type[0].type.name} id={e.id}/>)}
-                </div>
-                <div className="mt-12">
-                    <button className={(allState.prev == null)?`bg-gray-300 border-gray-400 border text-gray-400 mr-2 px-6 py-1 font-serif tracking-[4px] rounded-md`:`bg-[#2980B9] mr-2 px-6 py-1 font-serif tracking-[4px] rounded-md text-orange-100  transition duration-100 hover:-translate-y-[2px] hover:shadow-lg active:border-2 active:border-[#2980B9] active:text-[#2980B9] active:bg-orange-100 active:shadow-inner active:shadow-gray-400`}
-                    disabled={allState.prev == null}
-                    onClick={() =>setAllState((st) =>({...st,pokeUrl:allState.prev}))}
-                    >Prev</button>
+                    <div className="mt-12">
+                        <button className={(allState.prev == null)?`bg-gray-300 border-gray-400 border text-gray-400 mr-2 px-6 py-1 font-serif tracking-[4px] rounded-md`:`bg-[#2980B9] mr-2 px-6 py-1 font-serif tracking-[4px] rounded-md text-orange-100  transition duration-100 hover:-translate-y-[2px] hover:shadow-lg active:border-2 active:border-[#2980B9] active:text-[#2980B9] active:bg-orange-100 active:shadow-inner active:shadow-gray-400`}
+                        disabled={allState.prev == null}
+                        onClick={() =>setAllState((st) =>({...st,pokeUrl:allState.prev}))}
+                        >Prev</button>
 
-                    <button className={(allState.nxt == null)?`bg-gray-300 border-gray-400 border text-gray-400 ml-2 px-6 py-1 font-serif tracking-[4px] rounded-md`:`bg-[#2980B9] ml-2 px-6 py-1 font-serif tracking-[4px] rounded-md text-orange-100  transition duration-100 hover:-translate-y-[2px] hover:shadow-lg active:border-2 active:border-[#2980B9] active:text-[#2980B9] active:bg-orange-100 active:shadow-inner active:shadow-gray-400`}
-                    disabled={allState.nxt == null}
-                    onClick={() =>setAllState((st) =>({...st,pokeUrl:allState.nxt}))}
-                    >Next</button>
+                        <button className={(allState.nxt == null)?`bg-gray-300 border-gray-400 border text-gray-400 ml-2 px-6 py-1 font-serif tracking-[4px] rounded-md`:`bg-[#2980B9] ml-2 px-6 py-1 font-serif tracking-[4px] rounded-md text-orange-100  transition duration-100 hover:-translate-y-[2px] hover:shadow-lg active:border-2 active:border-[#2980B9] active:text-[#2980B9] active:bg-orange-100 active:shadow-inner active:shadow-gray-400`}
+                        disabled={allState.nxt == null}
+                        onClick={() =>setAllState((st) =>({...st,pokeUrl:allState.nxt}))}
+                        >Next</button>
+                    </div>
                 </div>
-            </div>
+                : <PokemonDetails key={SearchTerm} pokeName={SearchTerm}/>}
         </div>
     )
 }
