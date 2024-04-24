@@ -43,47 +43,51 @@ function PokemonDetails({pokeName}){
     return(
         <div className="flex flex-col h-screen items-center w-full">
         {(!isLoding)?!wrong?
-            <div className="flex flex-col mt-10 w-full items-center">
-                <div className="w-[380px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 hover:-translate-y-3">
+            <div className="flex flex-col mt-8 w-full items-end">
+                <div className="w-[420px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 hover:-translate-y-3 mr-[256px]">
                         <h1 className="text-center font-serif font-semibold text-red-800 text-3xl"># {pokemon.id1}</h1>
                 </div>
-                <div className="flex w-full justify-around mt-4">
-                    <div>
-                        <div>
-                            {pokemon.types?<span>Type</span>:null}
+                <div className="flex w-full justify-center gap-[100px] mt-4 mr-[60px]">
+                    <div className="flex flex-col mt-20">
+                        <div className="w-[380px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
+                            {pokemon.types?<span className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">TYPE</span>:null}
                         </div>
-                        <div className="flex">
-                            {pokemon.types && pokemon.types.map((x) =>
-                            <div>
-                                <p key={x}>{x}</p>
-                            </div>)} {/* if pokemon.types exist only that time it will render */}
+                        <div className="max-w-[380px]">
+                            <div className="flex justify-center gap-6">
+                                {pokemon.types && pokemon.types.map((x) =>
+                                <div className="min-w-[100px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
+                                    <p key={x}>{x.toUpperCase()}</p>
+                                </div>)} {/* if pokemon.types exist only that time it will render */}
+                            </div>
+                        </div>
+                        <div className="flex mt-12 gap-8">
+                            <div className="max-w-[250px] flex flex-col items-center">
+                                <div className="w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
+                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">HEIGHT</p>
+                                </div>
+                                <div className="min-w-[100px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
+                                    <p>{(pokemon.weight)/10} kg</p>
+                                </div>
+                            </div>
+                            <div className="max-w-[250px] flex flex-col items-center">
+                                <div className="w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
+                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">WEIGHT</p>
+                                </div> 
+                                <div className="min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
+                                    <p>{(pokemon.height)/10} m</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="bg-gray-400 rounded-lg w-[380px] h-[420px] flex justify-center items-center p-8 transition duration-200 hover:shadow-xl hover:shadow-gray-500 hover:bg-gray-300 hover:-translate-y-3">
                         <img id="pokeImg" src={pokemon.image} alt="" className=" min-w-[480px]
                          max-h-[480px]"/>
                     </div>
-                    <div className="flex">
-                        <div>
-                            <div>
-                                <p>HEIGHT</p>
-                            </div>
-                            <div>
-                                <p>{(pokemon.weight)/10} kg</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <p>WEIGHT</p>
-                            </div> 
-                            <div>
-                                <p>{(pokemon.height)/10} m</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div className="w-[380px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 mt-6">
-                    <p className="text-center mb-2 tracking-[8px] font-light">{pokemon.name.toUpperCase()}</p>
+                <div className="rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 mt-6 p-1 border-orange-600 border-4 mr-[256px]">
+                    <div className="w-[405px] p-2 bg-yellow-300 rounded-full">
+                        <p className="text-center mb-2 tracking-[8px] font-light text-red-800">{pokemon.name.toUpperCase()}</p>
+                    </div>
                 </div>
             </div>
             :
