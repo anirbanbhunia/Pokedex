@@ -63,7 +63,7 @@ function PokemonDetails({pokeName}){
                         <div className="flex mt-12 gap-8">
                             <div className="max-w-[250px] flex flex-col items-center">
                                 <div className="w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
-                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">HEIGHT</p>
+                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">WEIGHT</p>
                                 </div>
                                 <div className="min-w-[100px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
                                     <p>{(pokemon.weight)/10} kg</p>
@@ -71,7 +71,7 @@ function PokemonDetails({pokeName}){
                             </div>
                             <div className="max-w-[250px] flex flex-col items-center">
                                 <div className="w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
-                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">WEIGHT</p>
+                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">HEIGHT</p>
                                 </div> 
                                 <div className="min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
                                     <p>{(pokemon.height)/10} m</p>
