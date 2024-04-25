@@ -43,50 +43,53 @@ function PokemonDetails({pokeName}){
     return(
         <div className="flex flex-col h-screen items-center w-full">
         {(!isLoding)?!wrong?
-            <div className="flex flex-col mt-8 w-full items-end">
-                <div className="w-[420px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 hover:-translate-y-3 mr-[256px]">
-                        <h1 className="text-center font-serif font-semibold text-red-800 text-3xl"># {pokemon.id1}</h1>
-                </div>
-                <div className="flex w-full justify-center gap-[100px] mt-4 mr-[60px]">
-                    <div className="flex flex-col mt-20">
-                        <div className="w-[380px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
-                            {pokemon.types?<span className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">TYPE</span>:null}
-                        </div>
-                        <div className="max-w-[380px]">
-                            <div className="flex justify-center gap-6">
-                                {pokemon.types && pokemon.types.map((x) =>
-                                <div className="min-w-[100px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
-                                    <p key={x}>{x.toUpperCase()}</p>
-                                </div>)} {/* if pokemon.types exist only that time it will render */}
+            <div>
+                <div className="flex flex-col mt-20 w-full items-end lg:mt-8">
+                    <div className="w-[330px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 hover:-translate-y-3 mr-[75px] lg:w-[420px] lg:p-2 lg:mr-[72px]">
+                            <h1 className="text-center font-serif font-semibold text-red-800
+                            text-xs lg:text-3xl"># {pokemon.id1}</h1>
+                    </div>
+                    <div className="flex w-full justify-center gap-[45px] mt-20 mr-[70px] lg:gap-[100px] lg:mt-4 lg:mr-[60px]">
+                        <div className="flex flex-col mt-[-60px] items-center lg:mt-20 ml-[100px] lg:ml-0">
+                            <div className="w-[130px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-1 lg:p-2 lg:w-[380px]">
+                                {pokemon.types?<span className="tracking-[2px] font-serif font-semibold text-xs text-yellow-100 lg:tracking-[5px] lg:text-xl">TYPE</span>:null}
+                            </div>
+                            <div className="max-w-[180px] lg:max-w-[380px]">
+                                <div className="flex justify-center items-center flex-col lg:flex-row lg:gap-6">
+                                    {pokemon.types && pokemon.types.map((x) =>
+                                    <div className="max-w-[140px] bg-sky-600 text-center rounded-full mt-2 tracking-[4px] px-3 py-1 font-light text-xs text-red-100 lg:tracking-[8px] lg:text-base lg:min-w-[120px] lg:max-w-[340px] lg:mt-6" key={x}>
+                                        <p key={x}>{x.toUpperCase()}</p>
+                                    </div>)} {/* if pokemon.types exist only that time it will render */}
+                                </div>
+                            </div>
+                            <div className="flex mt-4 gap-8 flex-col lg:flex-row lg:mt-12">
+                                <div className="max-w-[130px] flex flex-col items-center lg:max-w-[250px]">
+                                    <div className="w-[130px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2 lg:w-[250px]">
+                                        <p className="tracking-[5px] font-serif font-semibold text-xs text-yellow-100 lg:text-xl">WEIGHT</p>
+                                    </div>
+                                    <div className="min-w-[50px] bg-sky-600 text-center rounded-full mt-2 tracking-[4px] px-3 py-1 font-light text-red-100 text-xs lg:min-w-[150px] lg:tracking-[8px] lg:text-base lg:mt-6">
+                                        <p>{(pokemon.weight)/10} kg</p>
+                                    </div>
+                                </div>
+                                <div className="max-w-[130px] flex flex-col items-center lg:max-w-[250px] mt-[-16px] lg:mt-0">
+                                    <div className="w-[130px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2 lg:w-[250px]">
+                                        <p className="tracking-[5px] font-serif font-semibold text-xs text-yellow-100 lg:text-xl">HEIGHT</p>
+                                    </div> 
+                                    <div className="min-w-[50px] bg-sky-600 text-center rounded-full mt-2 tracking-[4px] px-3 py-1 font-light text-xs text-red-100 lg:min-w-[150px] lg:tracking-[8px]  lg:text-base lg:mt-6">
+                                        <p>{(pokemon.height)/10} m</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="flex mt-12 gap-8">
-                            <div className="max-w-[250px] flex flex-col items-center">
-                                <div className="w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
-                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">WEIGHT</p>
-                                </div>
-                                <div className="min-w-[100px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
-                                    <p>{(pokemon.weight)/10} kg</p>
-                                </div>
-                            </div>
-                            <div className="max-w-[250px] flex flex-col items-center">
-                                <div className="w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2">
-                                    <p className="tracking-[5px] font-serif font-semibold text-xl text-yellow-100">HEIGHT</p>
-                                </div> 
-                                <div className="min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100">
-                                    <p>{(pokemon.height)/10} m</p>
-                                </div>
-                            </div>
+                        <div className="bg-gray-400 rounded-lg w-[140px] h-[180px] flex justify-center items-center p-8 transition duration-200 hover:shadow-xl hover:shadow-gray-500 hover:bg-gray-300 hover:-translate-y-3 lg:w-[380px] lg:h-[420px] relative bottom-6 lg:bottom-0">
+                            <img id="pokeImg" src={pokemon.image} alt="" className="min-w-[230px] max-h-[230px] lg:min-w-[480px] lg:max-h-[480px]"/>
                         </div>
                     </div>
-                    <div className="bg-gray-400 rounded-lg w-[380px] h-[420px] flex justify-center items-center p-8 transition duration-200 hover:shadow-xl hover:shadow-gray-500 hover:bg-gray-300 hover:-translate-y-3">
-                        <img id="pokeImg" src={pokemon.image} alt="" className=" min-w-[480px]
-                         max-h-[480px]"/>
-                    </div>
-                </div>
-                <div className="rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 mt-6 p-1 border-orange-600 border-4 mr-[256px]">
-                    <div className="w-[405px] p-2 bg-yellow-300 rounded-full">
-                        <p className="text-center mb-2 tracking-[8px] font-light text-red-800">{pokemon.name.toUpperCase()}</p>
+                    <div className="rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 mt-6 p-1 border-orange-600 border-4 mr-[75px] 
+                    lg:mr-[72px]">
+                        <div className="w-[316px] p-2 bg-yellow-300 rounded-full lg:w-[405px]">
+                            <p className="text-center tracking-[8px] font-light text-xs text-red-800 lg:text-base">{pokemon.name.toUpperCase()}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,3 +120,33 @@ function PokemonDetails({pokeName}){
     )
 }
 export default PokemonDetails
+
+//w-[420px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 hover:-translate-y-3 mr-[72px] //it's complite
+
+//text-center font-serif font-semibold text-red-800 text-3xl //it's for pokeId & it's complite
+
+//bg-gray-400 rounded-lg w-[380px] h-[420px] flex justify-center items-center p-8 transition duration-200 hover:shadow-xl hover:shadow-gray-500 hover:bg-gray-300 hover:-translate-y-3 //it's for imagediv & it's complite
+
+//min-w-[480px] max-h-[480px] //it's for image & it's complite
+
+//rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 mt-6 p-1 border-orange-600 border-4 mr-[72px] //first div of name & it's complite
+
+//w-[405px] p-2 bg-yellow-300 rounded-full //second div of name & it's complite
+
+//text-center mb-2 tracking-[8px] font-light text-red-800 //name
+
+//max-w-[250px] flex flex-col items-center //height level first div
+
+//w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2 //height level second div
+
+//min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100 // div of height
+
+//min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100 //div of weight
+
+//max-w-[250px] flex flex-col items-center //first div of level weight
+
+//w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2 //second div of level weight
+
+
+
+
