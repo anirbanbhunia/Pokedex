@@ -121,32 +121,3 @@ function PokemonDetails({pokeName}){
 }
 export default PokemonDetails
 
-//w-[420px] p-2 bg-yellow-300 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 hover:-translate-y-3 mr-[72px] //it's complite
-
-//text-center font-serif font-semibold text-red-800 text-3xl //it's for pokeId & it's complite
-
-//bg-gray-400 rounded-lg w-[380px] h-[420px] flex justify-center items-center p-8 transition duration-200 hover:shadow-xl hover:shadow-gray-500 hover:bg-gray-300 hover:-translate-y-3 //it's for imagediv & it's complite
-
-//min-w-[480px] max-h-[480px] //it's for image & it's complite
-
-//rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-500 mt-6 p-1 border-orange-600 border-4 mr-[72px] //first div of name & it's complite
-
-//w-[405px] p-2 bg-yellow-300 rounded-full //second div of name & it's complite
-
-//text-center mb-2 tracking-[8px] font-light text-red-800 //name
-
-//max-w-[250px] flex flex-col items-center //height level first div
-
-//w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2 //height level second div
-
-//min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100 // div of height
-
-//min-w-[150px] bg-sky-600 text-center rounded-full mt-6 tracking-[8px] px-3 py-1 font-light text-red-100 //div of weight
-
-//max-w-[250px] flex flex-col items-center //first div of level weight
-
-//w-[250px] bg-gray-700 rounded-full transition duration-200 hover:shadow-lg hover:shadow-gray-400 text-center p-2 //second div of level weight
-
-
-
-
